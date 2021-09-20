@@ -1,4 +1,4 @@
-from flask import jsonify, make_response, request
+from flask import make_response, request
 from mindee import app
 
 import requests
@@ -7,8 +7,8 @@ import requests
 @app.route('/image_parsing', methods=['POST'])
 def image_parsing():
     """
-    Step 1 : Make the API call
-    Step 2 : Return the client values
+    Step 1 : Make the API call to Mindee
+    Step 2 : Modify the response in order to match the customer schema
     """
 
     files = {"document": request.files['document']}

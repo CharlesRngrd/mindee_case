@@ -2,7 +2,7 @@ from flask import Flask
 
 
 app = Flask(__name__)
-app.url_map.strict_slashes = False
+
 app.config['DEBUG'] = True
 app.config['JSON_SORT_KEYS'] = False
 
