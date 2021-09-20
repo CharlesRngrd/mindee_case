@@ -13,14 +13,15 @@ def image_parsing():
 
     files = {"document": request.files['document']}
     headers = {"Authorization": f"Token {app.config['TOKEN']}"}
-    response = requests.post(app.config['URL'], files=files, headers=headers)
+    response = requests.post(app.config['URL'], files=files, headers=headers).json()
 
     error = response['api_request']['error']
     status_code = response['api_request']['status_code']
-    predictions = response['document']['inference']['prediction']
 
     if error:
         return(make_response(error, status_code))
+
+    predictions = response['document']['inference']['prediction']
 
     output = {}
     output['high_level'] = {}
